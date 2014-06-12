@@ -1,0 +1,20 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+key docker_key {
+  algorithm HMAC-MD5;
+  secret "EUSkJqkhlgxx3eeTguYYWA==";
+};
+
+zone "docker.lnet" IN {
+  type master;
+  file "/etc/bind/db.docker.zone";
+  allow-query { any; };
+  allow-transfer { none; };
+  allow-update { key docker_key; };
+};

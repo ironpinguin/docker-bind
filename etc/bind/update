@@ -1,0 +1,5 @@
+server 172.17.0.2
+zone docker.local
+update delete mongo1-1.docker.local A
+update add mongo1-1.docker.local 300 A 172.17.0.3
+send
